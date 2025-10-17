@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Happy Diwali Messages | B&W List</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #FFFFFF; /* True white background */
+        }
+
+        /* Animation for card entrance */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Card hover and focus transitions (High-contrast B&W Style) */
+        .message-card {
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            border-color: #E5E7EB; /* Light gray border */
+        }
+        .message-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle black shadow on hover */
+            background-color: #F9FAFB; /* Very light gray background on hover */
+        }
+
+        /* --- FIRECRACKER ANIMATION CSS --- */
+        .sparkle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50; 
+            overflow: hidden;
+        }
+
+        /* Base sparkle definition */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #FFD700; /* Start color */
+            border-radius: 50%;
+            opacity: 0;
+            /* Use CSS variables for custom animation per sparkle */
+            animation: firework 1.5s ease-out forwards;
+        }
+
+        /* Firework keyframes (burst and fade) */
+        @keyframes firework {
+            0% { opacity: 1; transform: scale(1) translate(0, 0); }
+            50% { opacity: 1; transform: scale(1.5) translate(var(--dx), var(--dy)); }
+            100% { opacity: 0; transform: scale(0.5) translate(var(--dx), var(--dy)); }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 min-h-screen p-4 sm:p-8">
+
+    <!-- Firecracker Animation Container -->
+    <div class="sparkle-container"></div>
+
+    <div id="app" class="max-w-5xl mx-auto">
+        
+        <!-- Header Section (High Contrast) -->
+        <header class="text-center py-6 sm:py-10 mb-8 border-b border-gray-300">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-gray-900 inline-block p-2 rounded-xl">
+                Deepavali Greetings 🕯️
+            </h1>
+            <p class="text-lg sm:text-xl mt-4 text-gray-600">
+                50 Unique Messages, Ready to Share
+            </p>
+        </header>
+
+        <!-- Message List Container -->
+        <div id="messages-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- All 50 messages will be injected here -->
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-4 text-gray-500 text-sm border-t border-gray-200">
+            Festival of Lights Collection
+        </footer>
+    </div>
+
+    <script>
+        // Consolidated list of all 50 messages
+        const allMessagesData = [
+            "May the divine light of Diwali bring peace, prosperity, and happiness to your life. Shubh Deepavali!",
+            "Wishing you and your family a festival of lights filled with brilliance, sweetness, and abundant blessings. Happy Diwali.",
+            "May Goddess Lakshmi bless you with wealth and success, and Lord Ganesha keep all obstacles away. Have a luminous Diwali!",
+            "As the diyas illuminate the world, may your heart be filled with eternal joy and satisfaction. Best wishes on Deepavali.",
+            "May this Diwali usher in a new year of growth, good fortune, and abundant health.",
+            "Wishing you the joyous sparkle of Deepavali and a year ahead that is bright, beautiful, and peaceful.",
+            "Let the light of the lamps guide you to the path of prosperity and enlightenment. Happy Deepavali to all.",
+            "May the beauty of the festive season fill your home with happiness and harmony. Shubh Deepavali!",
+            "Diwali vibes are officially here! Hope your celebrations are totally lit. ✨",
+            "Happy Diwali! Wishing you a fantastic day filled with good food, great company, and positive energy.",
+            "Sending you smiles, sweets, and sparkle this Diwali! Enjoy the long holiday weekend!",
+            "Time to celebrate! Have a fun, safe, and super happy Diwali!",
+            "Happy D! Wishing you all the best this festive season. Let's make some awesome memories.",
+            "Peace, love, and light to you and yours. Have an awesome, relaxed Diwali!",
+            "Hope you get all the good jalebis and even better fortune this year! Happy Diwali!",
+            "This Diwali, may you realize the light within you that shines brighter than any lamp. Happy Deepavali.",
+            "May the victory of light over darkness resonate in your soul and inspire goodness in your every action.",
+            "Ignite your inner lamp and let go of all negativity. Wishing you a truly meaningful and spiritual Diwali.",
+            "May the flame of devotion purify your mind and heart this festive season, leading to serenity. Shubh Deepavali.",
+            "Let the true essence of Diwali—the triumph of hope—illuminate your journey forward with strength.",
+            "Embrace the light. Embrace the good. Wishing you a deeply reflective and happy Diwali filled with inner peace.",
+            "As you light the lamp of knowledge, may ignorance be dispelled forever. Joyous Diwali.",
+            "Wishing you a Diwali so bright, you'll need sunglasses indoors. (And please go easy on the snacks!) 🕶️",
+            "Happy Diwali! May your pockets be heavy with cash, and your calories not count this festive week.",
+            "Pro Tip: Hide your favorite Mithai early. Wishing you a sweet and secure Diwali! 😉",
+            "May your life be as colorful as the rangoli and your phone battery as long as the festivities. Happy Diwali!",
+            "Sending you lots of love, light, and the willpower to resist eating *all* the gulab jamun. Happy Deepavali!",
+            "Hope your house is as clean as your intentions this year. Just kidding! Happy Diwali, you light up my life!",
+            "Wishing you and your organization a Diwali filled with prosperity, growth, and renewed success.",
+            "May the auspicious occasion of Deepavali bring renewed enthusiasm and brighter opportunities to your professional endeavors.",
+            "We extend our warmest wishes for a prosperous and successful Diwali season. Thank you for your support.",
+            "Happy Deepavali. We appreciate your continued partnership and wish you good fortune in the coming fiscal year.",
+            "Wishing you peace and joy this Diwali. May your year be marked by excellence and achievement.",
+            "On behalf of our team, wishing you a luminous and successful Festival of Lights. Shubh Deepavali.",
+            "My world is brighter because you're in it. Wishing you, my dearest, a deeply Happy Diwali.",
+            "Sending all my love and warm wishes to the best family/friend in the world this Diwali. Miss you all!",
+            "May the glow of the diyas fill your life with the same warmth and love you endlessly give to me.",
+            "Distance means nothing when the heart is full of love. Wishing you a beautiful, cherished Diwali.",
+            "You are the light in my life, and I wish you a Diwali that shines as brightly as you do.",
+            "Thinking of you and sending a big hug and lots of festive cheer this Deepavali.",
+            "Wishing my beautiful friends/family a Diwali filled with laughter, love, and wonderful new memories.",
+            "May every single moment of this Diwali be as sweet as the bond we share. Love you always.",
+            "Happy Diwali! Light & Luck to you!",
+            "Shubh Deepavali! Have a great one.",
+            "Peace. Love. Light. Happy Diwali.",
+            "Diwali joy to you! Enjoy!",
+            "The air is sweet with cardamom and light. May this beautiful night bless your life with everything bright. Happy Diwali.",
+            "A thousand earthen lamps flicker, chasing shadows away. Wishing you the bliss of this golden and auspicious day.",
+            "May the melody of laughter and the gleam of candles weave a beautiful tapestry of joy for you and your loved ones.",
+            "As dusk settles and the sky catches fire with fireworks, may your future explode with brilliant opportunities. Shubh Deepavali.",
+        ];
+
+        // --- FIRECRACKER ANIMATION LOGIC ---
+
+        // Function to create and launch a single burst of sparkles
+        function createSparkleBurst(x, y, duration = 1.5) {
+            const container = document.querySelector('.sparkle-container');
+            const colors = ['#FFD700', '#FFA500', '#FF6347', '#FFFFFF', '#6A5ACD']; // Festive colors
+            const numSparks = 30; // Number of particles in the burst
+
+            for (let i = 0; i < numSparks; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                
+                // Random position offsets for the burst (up to 300px spread)
+                const dx = (Math.random() - 0.5) * 300 + 'px'; 
+                const dy = (Math.random() - 0.5) * 300 + 'px';
+
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+                sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Apply custom CSS variables for randomized animation
+                sparkle.style.setProperty('--dx', dx);
+                sparkle.style.setProperty('--dy', dy);
+                sparkle.style.animationDuration = (duration * 0.8 + Math.random() * duration * 0.4) + 's';
+                sparkle.style.animationDelay = (Math.random() * 0.2) + 's';
+
+                container.appendChild(sparkle);
+
+                // Remove the sparkle after its animation finishes
+                setTimeout(() => {
+                    sparkle.remove();
+                }, (duration + 0.5) * 1000);
+            }
+        }
+
+        // Function to launch multiple bursts on load
+        function launchFireworks() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // Launch 4 bursts at slightly random, high positions
+            for (let i = 0; i < 4; i++) {
+                const randomX = width * 0.15 + Math.random() * width * 0.7; 
+                const randomY = height * 0.05 + Math.random() * height * 0.2; 
+                createSparkleBurst(randomX, randomY, 1.5);
+            }
+        }
+
+        // Function to render all messages
+        function renderMessages(dataToRender) {
+            const container = document.getElementById('messages-container');
+            container.innerHTML = '';
+            
+            dataToRender.forEach((message, index) => {
+                // The index is fixed since we are no longer filtering
+                const absoluteIndex = index + 1; 
+
+                // Message Card
+                const card = document.createElement('div');
+                card.className = 'message-card p-4 bg-white border border-gray-300 rounded-xl shadow-sm flex flex-col justify-between animate-fadeIn';
+                
+                const content = document.createElement('p');
+                content.className = 'text-base mb-3 text-gray-900 leading-relaxed';
+                content.textContent = message;
+
+                const footer = document.createElement('div');
+                footer.className = 'flex justify-between items-center pt-2 border-t border-gray-200';
+
+                const indexLabel = document.createElement('span');
+                indexLabel.className = 'text-xs font-semibold text-gray-700 bg-gray-100 px-2 py-1 rounded-full';
+                indexLabel.textContent = `Message #${absoluteIndex}`;
+
+                footer.appendChild(indexLabel);
+
+                card.appendChild(content);
+                card.appendChild(footer);
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize on window load: render all 50 messages and launch fireworks
+        window.onload = function() {
+            renderMessages(allMessagesData);
+            launchFireworks();
+        }
+
+    </script>
+</body>
+</html>
